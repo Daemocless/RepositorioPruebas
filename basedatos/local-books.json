@@ -1,0 +1,18 @@
+[
+  {
+    "id": "8c297546-e716-4583-9b59-ae553ca9a760",
+    "titulo": "Libro desde test",
+    "autor": "Autor test",
+    "genero": "Novela",
+    "estado": "pendiente",
+    "valoracion": null,
+    "total_paginas": null,
+    "paginas_leidas": null,
+    "fecha_compra": null,
+    "fecha_inicio": null,
+    "fecha_fin": null,
+    "notas": null,
+    "created_at": "2026-04-28T15:26:40.855Z",
+    "updated_at": "2026-04-28T15:26:40.855Z"
+  }
+]
