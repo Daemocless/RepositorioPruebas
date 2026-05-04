@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BookTracker",
-  description: "App para organizar libros y progreso de lectura.",
+  title: "BookTracker | Tu biblioteca cozy",
+  description: "Organiza tus lecturas con una interfaz cozy y enfoque en progreso.",
 };
 
 export default function RootLayout({
@@ -26,8 +26,9 @@ export default function RootLayout({
     <html
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      data-theme="dark"
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-background text-foreground">{children}</body>
     </html>
   );
 }
