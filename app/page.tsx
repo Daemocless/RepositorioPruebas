@@ -17,8 +17,13 @@ export default async function Home() {
     <div className="relative min-h-full">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-top bg-repeat-y [background-size:1600px_auto] opacity-70 saturate-125 dark:opacity-80"
-        style={{ backgroundImage: "var(--library-bg-image)" }}
+        className="pointer-events-none absolute inset-0 opacity-70 saturate-125"
+        style={{
+          backgroundImage: "var(--library-bg-image)",
+          backgroundPosition: "top",
+          backgroundRepeat: "repeat-y",
+          backgroundSize: "1600px auto",
+        }}
       />
       <div
         aria-hidden="true"
