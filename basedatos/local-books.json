@@ -14,5 +14,21 @@
     "notas": null,
     "created_at": "2026-04-28T15:26:40.855Z",
     "updated_at": "2026-04-28T15:26:40.855Z"
+  },
+  {
+    "id": "05ee08e9-30cb-4c9b-98aa-8f8ba1fff2ae",
+    "titulo": "er",
+    "autor": "la",
+    "genero": "misterio",
+    "estado": "pendiente",
+    "valoracion": 3,
+    "total_paginas": 250,
+    "paginas_leidas": 120,
+    "fecha_compra": null,
+    "fecha_inicio": "2026-05-07",
+    "fecha_fin": "2026-05-22",
+    "notas": null,
+    "created_at": "2026-05-04T08:12:27.238Z",
+    "updated_at": "2026-05-04T08:12:27.238Z"
   }
 ]

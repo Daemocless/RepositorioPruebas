@@ -13,9 +13,11 @@ const statusLabels: Record<BookStatus, string> = {
 };
 
 const statusStyles: Record<BookStatus, string> = {
-  pendiente: "bg-slate-800 text-slate-200 border border-slate-700",
-  leyendo: "bg-indigo-900/50 text-indigo-200 border border-indigo-700/70",
-  leido: "bg-emerald-900/40 text-emerald-200 border border-emerald-700/70",
+  pendiente: "border border-slate-300 bg-slate-200 text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200",
+  leyendo:
+    "border border-indigo-300 bg-indigo-100 text-indigo-700 dark:border-indigo-700/70 dark:bg-indigo-900/50 dark:text-indigo-200",
+  leido:
+    "border border-emerald-300 bg-emerald-100 text-emerald-700 dark:border-emerald-700/70 dark:bg-emerald-900/40 dark:text-emerald-200",
 };
 
 const fullDateFormatter = new Intl.DateTimeFormat("es-ES", {
@@ -167,35 +169,35 @@ export function BooksDashboard({ initialBooks }: { initialBooks: Book[] }) {
 
   return (
     <section className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-      <article className="space-y-4 rounded-2xl border border-slate-700 bg-gradient-to-b from-slate-900 to-slate-800/80 p-5 shadow-lg lg:col-span-5">
-        <h2 className="text-lg font-semibold text-slate-100">{editingId ? "Editar libro" : "Nuevo libro"}</h2>
+      <article className="space-y-4 rounded-2xl border border-slate-300 bg-white/90 p-5 shadow-lg lg:col-span-5 dark:border-slate-700 dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800/80">
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{editingId ? "Editar libro" : "Nuevo libro"}</h2>
         <form className="grid grid-cols-1 gap-3" onSubmit={handleSubmit}>
-          <input className="h-10 rounded-xl border border-slate-600 bg-slate-900/60 px-3 text-sm text-slate-100 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40" placeholder="Titulo" value={form.titulo} onChange={(event) => setForm((prev) => ({ ...prev, titulo: event.target.value }))} required />
-          <input className="h-10 rounded-xl border border-slate-600 bg-slate-900/60 px-3 text-sm text-slate-100 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40" placeholder="Autor" value={form.autor} onChange={(event) => setForm((prev) => ({ ...prev, autor: event.target.value }))} required />
-          <input className="h-10 rounded-xl border border-slate-600 bg-slate-900/60 px-3 text-sm text-slate-100 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40" placeholder="Genero" value={form.genero} onChange={(event) => setForm((prev) => ({ ...prev, genero: event.target.value }))} />
+          <input className="h-10 rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-100" placeholder="Titulo" value={form.titulo} onChange={(event) => setForm((prev) => ({ ...prev, titulo: event.target.value }))} required />
+          <input className="h-10 rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-100" placeholder="Autor" value={form.autor} onChange={(event) => setForm((prev) => ({ ...prev, autor: event.target.value }))} required />
+          <input className="h-10 rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-100" placeholder="Genero" value={form.genero} onChange={(event) => setForm((prev) => ({ ...prev, genero: event.target.value }))} />
           <AppSelect
             value={form.estado}
             onValueChange={(value) => setForm((prev) => ({ ...prev, estado: value }))}
             options={BOOK_STATUSES.map((status) => ({ value: status, label: statusLabels[status] }))}
           />
-          <input className="h-10 rounded-xl border border-slate-600 bg-slate-900/60 px-3 text-sm text-slate-100 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40" placeholder="Valoracion (1-5)" type="number" min={1} max={5} value={form.valoracion} onChange={(event) => setForm((prev) => ({ ...prev, valoracion: event.target.value }))} />
-          <input className="h-10 rounded-xl border border-slate-600 bg-slate-900/60 px-3 text-sm text-slate-100 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40" placeholder="Total paginas" type="number" min={1} value={form.total_paginas} onChange={(event) => setForm((prev) => ({ ...prev, total_paginas: event.target.value }))} />
-          <input className="h-10 rounded-xl border border-slate-600 bg-slate-900/60 px-3 text-sm text-slate-100 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40" placeholder="Paginas leidas" type="number" min={0} value={form.paginas_leidas} onChange={(event) => setForm((prev) => ({ ...prev, paginas_leidas: event.target.value }))} />
-          <label className="grid gap-1 text-sm text-slate-300">
+          <input className="h-10 rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-100" placeholder="Valoracion (1-5)" type="number" min={1} max={5} value={form.valoracion} onChange={(event) => setForm((prev) => ({ ...prev, valoracion: event.target.value }))} />
+          <input className="h-10 rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-100" placeholder="Total paginas" type="number" min={1} value={form.total_paginas} onChange={(event) => setForm((prev) => ({ ...prev, total_paginas: event.target.value }))} />
+          <input className="h-10 rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-100" placeholder="Paginas leidas" type="number" min={0} value={form.paginas_leidas} onChange={(event) => setForm((prev) => ({ ...prev, paginas_leidas: event.target.value }))} />
+          <label className="grid gap-1 text-sm text-slate-600 dark:text-slate-300">
             <span>Fecha de inicio</span>
-            <input className="h-10 rounded-xl border border-slate-600 bg-slate-900/60 px-3 text-sm text-slate-100 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40" type="date" value={form.fecha_inicio} onChange={(event) => setForm((prev) => ({ ...prev, fecha_inicio: event.target.value }))} />
+            <input className="h-10 rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-100" type="date" value={form.fecha_inicio} onChange={(event) => setForm((prev) => ({ ...prev, fecha_inicio: event.target.value }))} />
           </label>
-          <label className="grid gap-1 text-sm text-slate-300">
+          <label className="grid gap-1 text-sm text-slate-600 dark:text-slate-300">
             <span>Fecha de fin</span>
-            <input className="h-10 rounded-xl border border-slate-600 bg-slate-900/60 px-3 text-sm text-slate-100 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40" type="date" value={form.fecha_fin} onChange={(event) => setForm((prev) => ({ ...prev, fecha_fin: event.target.value }))} />
+            <input className="h-10 rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-100" type="date" value={form.fecha_fin} onChange={(event) => setForm((prev) => ({ ...prev, fecha_fin: event.target.value }))} />
           </label>
-          <textarea className="min-h-20 rounded-xl border border-slate-600 bg-slate-900/60 px-3 py-2 text-sm text-slate-100 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40" placeholder="Notas" value={form.notas} onChange={(event) => setForm((prev) => ({ ...prev, notas: event.target.value }))} />
+          <textarea className="min-h-20 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 dark:border-slate-600 dark:bg-slate-900/60 dark:text-slate-100" placeholder="Notas" value={form.notas} onChange={(event) => setForm((prev) => ({ ...prev, notas: event.target.value }))} />
           <div className="flex gap-2">
             <button className="h-10 flex-1 rounded-xl bg-indigo-600 px-3 text-sm font-medium text-white shadow-sm transition hover:bg-indigo-500" type="submit">
               {editingId ? "Guardar cambios" : "Agregar libro"}
             </button>
             {editingId && (
-              <button className="h-10 rounded-xl border border-slate-600 bg-slate-900/50 px-3 text-sm text-slate-200 transition hover:bg-slate-800" type="button" onClick={resetForm}>
+              <button className="h-10 rounded-xl border border-slate-300 bg-slate-100 px-3 text-sm text-slate-700 transition hover:bg-slate-200 dark:border-slate-600 dark:bg-slate-900/50 dark:text-slate-200 dark:hover:bg-slate-800" type="button" onClick={resetForm}>
                 Cancelar
               </button>
             )}
@@ -204,7 +206,7 @@ export function BooksDashboard({ initialBooks }: { initialBooks: Book[] }) {
         </form>
       </article>
 
-      <article className="space-y-4 rounded-2xl border border-slate-700 bg-slate-900/60 p-5 shadow-lg lg:col-span-7">
+      <article className="space-y-4 rounded-2xl border border-slate-300 bg-white/85 p-5 shadow-lg lg:col-span-7 dark:border-slate-700 dark:bg-slate-900/60">
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
           <Stat label="Total" value={stats.total} />
           <Stat label="Leidos" value={stats.leidos} />
@@ -214,7 +216,7 @@ export function BooksDashboard({ initialBooks }: { initialBooks: Book[] }) {
 
         <div className="grid gap-3 md:grid-cols-3">
           <input
-            className="h-10 rounded-xl border border-slate-600 bg-slate-900/70 px-3 text-sm text-slate-100 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 md:col-span-2"
+            className="h-10 rounded-xl border border-slate-300 bg-white px-3 text-sm text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/40 md:col-span-2 dark:border-slate-600 dark:bg-slate-900/70 dark:text-slate-100"
             placeholder="Buscar por titulo, autor o genero"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
@@ -244,22 +246,22 @@ export function BooksDashboard({ initialBooks }: { initialBooks: Book[] }) {
         </div>
 
         <div className="space-y-2">
-          {loading && <p className="text-sm text-slate-300">Cargando libros...</p>}
+          {loading && <p className="text-sm text-slate-500 dark:text-slate-300">Cargando libros...</p>}
           {!loading && visibleBooks.length === 0 && (
-            <p className="text-sm text-slate-300">No hay libros para ese criterio de busqueda.</p>
+            <p className="text-sm text-slate-500 dark:text-slate-300">No hay libros para ese criterio de busqueda.</p>
           )}
           {visibleBooks.map((book) => (
-            <article key={book.id} className="rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-900 to-slate-800 p-4 shadow-sm">
+            <article key={book.id} className="rounded-2xl border border-slate-300 bg-gradient-to-br from-white to-slate-100 p-4 shadow-sm dark:border-slate-700 dark:from-slate-900 dark:to-slate-800">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1 space-y-3">
                   <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="font-semibold text-slate-100">{book.titulo}</h3>
+                    <h3 className="font-semibold text-slate-900 dark:text-slate-100">{book.titulo}</h3>
                     <span className={`inline-flex rounded-full px-2 py-0.5 text-[11px] font-medium ${statusStyles[book.estado]}`}>
                       {statusLabels[book.estado]}
                     </span>
                   </div>
-                  <p className="text-sm text-slate-300">{book.autor}</p>
-                  <div className="grid gap-1 text-xs text-slate-300 sm:grid-cols-2">
+                  <p className="text-sm text-slate-600 dark:text-slate-300">{book.autor}</p>
+                  <div className="grid gap-1 text-xs text-slate-600 dark:text-slate-300 sm:grid-cols-2">
                     <p>Genero: {book.genero ?? "-"}</p>
                     <p>Valoracion: {book.valoracion ? `${book.valoracion}/5` : "-"}</p>
                     <p>
@@ -271,7 +273,7 @@ export function BooksDashboard({ initialBooks }: { initialBooks: Book[] }) {
                   </div>
                   {book.total_paginas && (
                     <div className="space-y-1">
-                      <div className="h-2 overflow-hidden rounded-full bg-slate-700">
+                      <div className="h-2 overflow-hidden rounded-full bg-slate-300 dark:bg-slate-700">
                         <div
                           className="h-full rounded-full bg-indigo-500 transition-all"
                           style={{
@@ -282,7 +284,7 @@ export function BooksDashboard({ initialBooks }: { initialBooks: Book[] }) {
                           }}
                         />
                       </div>
-                      <p className="text-xs text-slate-400">
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
                         Progreso:{" "}
                         {Math.min(
                           100,
@@ -292,12 +294,12 @@ export function BooksDashboard({ initialBooks }: { initialBooks: Book[] }) {
                       </p>
                     </div>
                   )}
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
                     Creado: {formatDate(book.created_at, true)} | Actualizado:{" "}
                     {formatDate(book.updated_at, true)}
                   </p>
                   {book.notas && (
-                    <p className="rounded-lg border border-slate-700 bg-slate-800 px-2 py-1 text-xs text-slate-200">
+                    <p className="rounded-lg border border-slate-300 bg-slate-100 px-2 py-1 text-xs text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">
                       Nota: {book.notas}
                     </p>
                   )}
