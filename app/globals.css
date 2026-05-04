@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b1020;
+  --background-elevated: #111b35;
+  --foreground: #e5e7eb;
+  --library-bg-image: url("/bookshelves-bg.svg");
 }
 
 @theme inline {
@@ -12,15 +14,22 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="light"] {
+  --background: #f1f5f9;
+  --background-elevated: #e2e8f0;
+  --foreground: #0f172a;
+  --library-bg-image: url("/bookshelves-bg-light.svg");
+}
+
+[data-theme="dark"] {
+  --background: #0b1020;
+  --background-elevated: #111b35;
+  --foreground: #e5e7eb;
+  --library-bg-image: url("/bookshelves-bg.svg");
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
